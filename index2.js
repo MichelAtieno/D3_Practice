@@ -18,13 +18,6 @@ var simulation = d3
     .force("link", d3.forceLink(graphData.links).id(d => d.name))
     .on("tick", ticked);
 
-// var simulation = d3
-//     .forceSimulation(graphData.nodes)
-//     .force("charge", d3.forceManyBody().strength(300))
-//     .force("center", d3.forceCenter(width / 2, height / 2))
-//     .force("collide", d3.forceCollide(30).strength(0.7))
-//     .on("tick", ticked);
-
 var links = svg
     .append("g")
     .selectAll("line")
@@ -97,9 +90,3 @@ function dragended(d) {
     d.fy = null;
 }
 
-
-// var rect = svg
-//     .append("rect")
-//     .attr("height", 10)
-//     .attr("width", 10)
-//     .style("fill", "red");
