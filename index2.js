@@ -3,7 +3,12 @@ var width = svg.attr("width");
 var height = svg.attr("height");
 
 var graphData = {
-    nodes: [{ name: "A"}, { name: "B"}, { name: "C"}, { name: "D"}],
+    nodes: [
+        { name: "A", radius: 10 },
+        { name: "B", radius: 15 },
+        { name: "C", radius: 50 }, 
+        { name: "D", radius: 35 }
+    ],
     links: [
         { source: "A", target: "B"},
         { source: "B", target: "C"},
@@ -13,9 +18,11 @@ var graphData = {
 
 var simulation = d3
     .forceSimulation(graphData.nodes)
-    .force("charge", d3.forceManyBody().strength(-30))
+    .force("charge", d3.forceManyBody().strength(300))
     .force("center", d3.forceCenter(width / 2, height / 2))
-    .force("link", d3.forceLink(graphData.links).id(d => d.name))
+    .force("collide", d3.forceCollide(function(d) {
+        return d.radius;
+    }))
     .on("tick", ticked);
 
 var links = svg
@@ -43,7 +50,9 @@ var textsAndNodes = svg
 
 var circles = textsAndNodes
     .append("circle")
-    .attr("r", 5)
+    .attr("r", function(d) {
+        return d.radius
+    })
     .attr("fill", "red");
 
 var texts = textsAndNodes.append("text").text(function(d) {
