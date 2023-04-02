@@ -19,6 +19,25 @@
         
         <!-- <script src="index.js"></script> -->
         <!-- <script src="index1.js"></script> -->
-        <script src="index2.js"></script>
+        <!-- <script src="index2.js"></script> -->
+        <!-- <script src="index3.js"></script> -->
+        <script>
+            fetch('data/sample.json')
+                .then(
+                function(resp) {
+                    return resp.json();
+                })
+                .then(
+                  function(data) {
+                    console.log(data)
+                  }  
+                );
+            // d3
+            //  .json('data/sample.json')
+            //  .then(
+            //     json => console.log(json)
+            //  );
+        
+        </script>
     </body>
 </html>
