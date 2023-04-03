@@ -25,6 +25,8 @@ function main() {
                 return d.GAME_DATE
                 
             }))
+
+            
             yScale.domain([0, d3.max(data, function(d) {
                 // console.log(typeof(parseInt(d.PTS)))
                 return d.PTS;
